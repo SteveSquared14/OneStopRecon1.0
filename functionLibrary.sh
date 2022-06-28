@@ -10,7 +10,14 @@ whoIsFunc(){
 	echo "Would you like to conduction optional name-server enumeration? (Y/N)"
 	read response
 	if [[ "$response" == "Y" ]]; then
-		echo "Placeholder for name-server enumeration"
+		nameServers="$(cat tempFile.txt | grep -Eo "ns[0-9-]+[.]")"
+		nameServersArray=($nameServers)
+		for ns in "${nameServersArray[@]}"; do
+			#echo "ns is $ns"
+			echo "==================Summary for "$ns"======================="
+			nslookup $ns
+		done
+
 	elif [[ "$response" == "N" ]]; then
 		cat tempFile.txt
 		rm tempFile.txt
@@ -29,7 +36,7 @@ robotsTxt(){
 #exploitDB
 
 
-#google dorking
+#google dorking - TBC by Mo
 
 
 #DNS enumeration
