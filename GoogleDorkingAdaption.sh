@@ -56,18 +56,16 @@ googleDorking_fileType_PDF(){
 }
 
 googleDorking_fileType_PNG(){
-urlPrepended="https://www.google.com/search?q="
         searchTerm=$1
-        urlWithTerm=$urlPrepended$searchTerm  
+        urlWithTerm=$main_url$searchTerm 
         concatUrl=$urlWithTerm$file_convection"png"
         #echo $concatUrl
         xdg-open $concatUrl
 }
 
 googleDorking_fileType_JPEG(){
-urlPrepended="https://www.google.com/search?q="
         searchTerm=$1
-        urlWithTerm=$urlPrepended$searchTerm  
+        urlWithTerm=$main_url$searchTerm   
         concatUrl=$urlWithTerm$file_convection"jpeg"
         #echo $concatUrl
         xdg-open $concatUrl
@@ -75,9 +73,8 @@ urlPrepended="https://www.google.com/search?q="
 }
 
 googleDorking_fileType_XML(){
-urlPrepended="https://www.google.com/search?q="
         searchTerm=$1
-        urlWithTerm=$urlPrepended$searchTerm  
+        urlWithTerm=$main_url$searchTerm   
         concatUrl=$urlWithTerm$file_convection"xml"
         #echo $concatUrl
         xdg-open $concatUrl
@@ -85,9 +82,8 @@ urlPrepended="https://www.google.com/search?q="
 }
 
 googleDorking_fileType_LOG(){
-urlPrepended="https://www.google.com/search?q="
         searchTerm=$1
-        urlWithTerm=$urlPrepended$searchTerm  
+        urlWithTerm=$main_url$searchTerm  
         concatUrl=$urlWithTerm$file_convection"log"
         #echo $concatUrl
         xdg-open $concatUrl
