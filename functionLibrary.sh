@@ -6,18 +6,20 @@ whoIsFunc(){
 	domain=$1
 	whois $domain > tempFile.txt
 
-	#Part below here is for optional/further enumeration of named servers
 	echo "Would you like to conduction optional name-server enumeration? (Y/N)"
 	read response
 	if [[ "$response" == "Y" ]]; then
-		nameServers="$(cat tempFile.txt | grep -Eo "ns[0-9-]+[.]")"
+		nameServers="$(cat tempFile.txt | grep -E "Name Server: [a-z]")"
 		nameServersArray=($nameServers)
-		for ns in "${nameServersArray[@]}"; do
-			#echo "ns is $ns"
-			echo "==================Summary for "$ns"======================="
-			nslookup $ns
+		
+		for ns in "${!nameServersArray[@]}";do
+			if [[ $(($ns % 3 )) == "2" ]]; then
+				echo "==========Summary for "${nameServersArray[ns]}"=========="
+				
+				nslookup "${nameServersArray[ns]}"
+			fi
 		done
-
+		echo "============================================="
 	elif [[ "$response" == "N" ]]; then
 		cat tempFile.txt
 		rm tempFile.txt
@@ -36,14 +38,19 @@ robotsTxt(){
 #exploitDB
 
 
-#google dorking - TBC by Mo
-
 
 #DNS enumeration
 #Commands to use - dig, host, nslookup, 
-#dnsCheck(){
-#	
-#}
+dnsCheck(){
+	#run dig command with a parameter of a chosen domain
+	dig $1 > tempDigFile.txt
+	cat tempDigFile.txt | grep -E 
+
+	#grep output of dig, looking for an ip addrr. Pass that to host command
+}
+
+#seperate function nslookup for dns enumeration
+#copy code from above
 
 #google maps
 googleMaps(){
@@ -63,7 +70,6 @@ googleMaps(){
 	xdg-open $completeUrl
 }
 
-
 #facebook/social media
 
 
@@ -75,6 +81,7 @@ googleMaps(){
 
 
 #Testing below here
-whoIsFunc $1
+#whoIsFunc $1
 #googleMaps $@
 #robotsTxt $1
+dnsCheck $1
