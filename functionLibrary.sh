@@ -4,25 +4,20 @@
 #whois - takes a domain and returns any name servers
 whoIsFunc(){
 	domain=$1
-	whois $domain > tempFile.txt
+	whoIsOutput="$(whois $domain)"
+	nameServers="$(echo "$whoIsOutput" | grep -E "Name Server: [a-z]")"
 
-	echo "Would you like to conduction optional name-server enumeration? (Y/N)"
+	echo "Name Servers for $domain have been found!"
+	echo "Would you also like to conduction optional name-server enumeration? (Y/N)"
 	read response
-	if [[ "$response" == "Y" ]]; then
-		nameServers="$(cat tempFile.txt | grep -E "Name Server: [a-z]")"
-		nameServersArray=($nameServers)
-		
-		for ns in "${!nameServersArray[@]}";do
-			if [[ $(($ns % 3 )) == "2" ]]; then
-				echo "==========Summary for "${nameServersArray[ns]}"=========="
-				
-				nslookup "${nameServersArray[ns]}"
-			fi
-		done
-		echo "============================================="
-	elif [[ "$response" == "N" ]]; then
-		cat tempFile.txt
-		rm tempFile.txt
+	if [[ "$response" == "Y" ]] || [[ "$response" == "y" ]]; then
+		echo "======================= Summary of whois for $domain ======================="
+		echo "$whoIsOutput"
+		nsLookupFunc $nameServers		
+
+	elif [[ "$response" == "N" ]] || [[ "$response" == "n" ]]; then
+		echo "======================= Summary of whois for $domain ======================="
+		echo "$whoIsOutput"
 	fi
 }
 
@@ -40,17 +35,48 @@ robotsTxt(){
 
 
 #DNS enumeration
-#Commands to use - dig, host, nslookup, 
+#Commands to use - dig, host, nslookup
 dnsCheck(){
 	#run dig command with a parameter of a chosen domain
-	dig $1 > tempDigFile.txt
-	cat tempDigFile.txt | grep -E 
-
+	#dig $1 > tempDigFile.txt
+	echo "======================= Summary of Dig for "$1" ======================="
+	dig $1
+	ipAddr="$(dig $1 | grep -Eo "[0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}$")"
+	
 	#grep output of dig, looking for an ip addrr. Pass that to host command
+	echo " "
+       	echo "==================== Summary of Host for "$ipAddr" ===================="
+	host $ipAddr
+	
+	#name server enumeration - duplicate code atm, need to refine
+	nameServers="$(whois $1 | grep -E "Name Server: [a-z]")"
+	dnsNameServersArray=($nameServers)
+	echo " "
+	echo " "
+	echo "=================== Summary for nsLookup of Name Servers ==================="
+	for ns in "${!dnsNameServersArray[@]}"; do
+		if [[ $(($ns % 3 )) == "2" ]];then
+			echo "======================== Summary for "${dnsNameServersArray[ns]}" ========================"
+			nslookup "${dnsNameServersArray[ns]}"
+		fi
+	done
+
 }
 
 #seperate function nslookup for dns enumeration
-#copy code from above
+nsLookupFunc(){
+	nameServersArray=($@)
+		
+	for ns in "${!nameServersArray[@]}";do
+		if [[ $(($ns % 3 )) == "2" ]]; then
+			echo "========== Summary for "${nameServersArray[ns]}" =========="
+			
+			nslookup "${nameServersArray[ns]}"
+		fi
+	done
+	echo "============================================="
+}
+
 
 #google maps
 googleMaps(){
@@ -73,15 +99,16 @@ googleMaps(){
 #facebook/social media
 
 
-#metadata extraction
+#metadata extraction - TBC by Mo
 
 
 #shodan
-
+#url parameter manipulation to open a webpage for whatever the user wants to search for
+#open it in a web browser = maybe use xdg-open
 
 
 #Testing below here
-#whoIsFunc $1
+whoIsFunc $1
 #googleMaps $@
 #robotsTxt $1
-dnsCheck $1
+#dnsCheck $1
