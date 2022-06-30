@@ -91,7 +91,7 @@ googleDorking_fileType_LOG(){
 }
 
 
-# fucntion calling
+# function calling
 
 googleDorking_cache $1
 googleDorking_site $1
