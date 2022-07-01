@@ -83,7 +83,7 @@ googleMaps(){
 	urlPrepend="https://google.com/maps/place/"
 	placeToOpen=""
 	for var in "$@"; do
-		if [[ $placeToOpen -eq "" ]]
+		if [[ $placeToOpen == "" ]];
 		then
 			placeToOpen=$var
 		else
@@ -105,10 +105,42 @@ googleMaps(){
 #shodan
 #url parameter manipulation to open a webpage for whatever the user wants to search for
 #open it in a web browser = maybe use xdg-open
+shodanFunc(){
+	mainUrl="https://www.shodan.io/search?query="
+	searchParams=""
+	for var in "$@"; do
+		if [[ $searchParams == "" ]];
+		then
+			searchParams=$var
+		else
+			searchParams=$searchParams+$var
+			shift
+		fi
+	done
+	completeUrl=$mainUrl$searchParams
+	xdg-open $completeUrl
+}
+
+
+
+#banner grabbing
+bannerGrab(){
+	searchParam=$1
+	echo "==================== Summary of wget for "$searchParam" ===================="
+	echo " "
+	wget -q -S "$searchParam"
+	echo " "
+	echo "==================== Summary of curl for "$searchParam" ===================="
+	echo " "
+	curl -s -I "$searchParam"
+}
+
 
 
 #Testing below here
-whoIsFunc $1
+#whoIsFunc $1
 #googleMaps $@
 #robotsTxt $1
 #dnsCheck $1
+#shodanFunc $@
+bannerGrab $1
