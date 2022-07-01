@@ -14,11 +14,11 @@ echo "Hex dump:" "$(hexdump $file_name | head)"
 for file in "$file_name"; do 
         if [ -f $file_name ];
         then 
-                exif  $file_name
-        else 
-                if [ $file_ext != ".png" | ".jpeg" | ".jpg" | ".gif" | ".tiff" | ".psd" | ".ai" | ".indd" | ".raw" ]
+                if [ $file_ext == ".png" ] || [ $file_ext == ".jpg" ] || [ $file_ext == ".jpg" ] || [ $file_ext == ".gif" ] || [ $file_ext == ".tiff" ] || [ $file_ext == ".psd" ] || [ $file_ext == ".ai" ] || [ $file_ext == ".indd" ] || [ $file_ext == ".raw" ];
                 then
-                        echo "file not compatible for EXIF data extraction"
+			exif $file_name 
+		else
+		echo "file not compatible for EXIF data extraction"
                 fi
         fi 
 done;

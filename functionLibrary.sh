@@ -8,7 +8,7 @@ whoIsFunc(){
 	nameServers="$(echo "$whoIsOutput" | grep -E "Name Server: [a-z]")"
 
 	echo "Name Servers for $domain have been found!"
-	echo "Would you also like to conduction optional name-server enumeration? (Y/N)"
+	echo "Would you also like to conduct optional name-server enumeration? (Y/N)"
 	read response
 	if [[ "$response" == "Y" ]] || [[ "$response" == "y" ]]; then
 		echo "======================= Summary of whois for $domain ======================="
@@ -21,13 +21,29 @@ whoIsFunc(){
 	fi
 }
 
-#robots.txt
-robotsTxt(){
+#robots.txt & security.txt - needs to be passed a domain
+txtFileChecks(){
 	urlPrepend="https://"
 	domainToOpen=$1
-	urlAppend="/robots.txt/"
-	completeURL=$urlPrepend$domainToOpen$urlAppend
-	xdg-open $completeURL
+	
+	#robots.txt
+	urlAppend="/robots.txt"
+	completeUrl=$domainToOpen$urlAppend
+	#xdg-open $completeURL
+	echo "====================== Summary of robots.txt for "$domainToOpen" ===================="
+	wget -q $completeUrl
+	cat robots.txt
+	echo " "
+	echo " "
+	rm robots.*
+	#security.txt
+	urlAppend2="/security.txt"
+	completeUrl2=$domainToOpen$urlAppend2
+	#xdg-open $completeUrl2
+	echo "==================== Summary of security.txt for "$domainToOpen" ===================="
+	wget -q $completeUrl2
+	cat security.txt
+	rm security.*
 }
 
 #exploitDB
@@ -140,7 +156,7 @@ bannerGrab(){
 #Testing below here
 #whoIsFunc $1
 #googleMaps $@
-#robotsTxt $1
+txtFileChecks $1
 #dnsCheck $1
 #shodanFunc $@
-bannerGrab $1
+#bannerGrab $1
