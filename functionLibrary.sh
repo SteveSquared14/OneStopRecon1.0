@@ -179,14 +179,3 @@ bannerGrab(){
 	echo " "
 	curl -s -I "$searchParam"
 }
-
-
-
-#Testing below here
-#whoIsFunc $1
-#googleMaps $@
-#txtFileChecks $1
-#dnsCheck $1
-#shodanFunc $@
-#bannerGrab $1
-metadataExtraction $@
