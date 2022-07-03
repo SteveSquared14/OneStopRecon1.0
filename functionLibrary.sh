@@ -29,17 +29,16 @@ txtFileChecks(){
 	#robots.txt
 	urlAppend="/robots.txt"
 	completeUrl=$domainToOpen$urlAppend
-	#xdg-open $completeURL
 	echo "====================== Summary of robots.txt for "$domainToOpen" ===================="
 	wget -q $completeUrl
 	cat robots.txt
 	echo " "
 	echo " "
 	rm robots.*
+	
 	#security.txt
 	urlAppend2="/security.txt"
 	completeUrl2=$domainToOpen$urlAppend2
-	#xdg-open $completeUrl2
 	echo "==================== Summary of security.txt for "$domainToOpen" ===================="
 	wget -q $completeUrl2
 	cat security.txt
