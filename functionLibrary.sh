@@ -47,8 +47,7 @@ txtFileChecks(){
 }
 
 #exploitDB
-
-
+#scrapped until version 2 of tool in progress
 
 #DNS enumeration
 #Commands to use - dig, host, nslookup
@@ -113,14 +112,44 @@ googleMaps(){
 }
 
 #facebook/social media
+#scrapped until version 2 of tool in progress
 
 
 #metadata extraction - TBC by Mo
+metadataExtraction(){
+for file in "$@"; do 
+        if [ -f $file ];
+        then
+                file_name=$1
+                file_ext="$(echo "$file_name" | grep -Eo "[.][a-z]+")"
+                echo "file extension is "$file_ext""
+
+                echo "============================== Metadata Extraction for "$file_name" =============================="
+                echo "File Name & description:" "$(file $file_name)"
+                echo " "
+                echo "SHA512 Hash:" "$(sha512sum  $file_name)"
+                echo " "
+                echo "Head of Hex Dump:" "$(hexdump $file_name | head)"
+                echo " "
+
+                if [ $file_ext == ".png" ] || [ $file_ext == ".jpg" ] || [ $file_ext == ".jpeg" ] || [ $file_ext == ".gif" ] || [ $file_ext == ".tiff" ] || [ $file_ext == ".psd" ];
+                then
+                        exif $file_name
+                        echo " "
+                        shift
+                else
+                        echo "File not compatible for EXIF data extraction"
+                        echo " "
+                        shift
+                fi
+        else
+                echo "Warning: Only files are compatible with this module!"
+        fi
+done;
+}
 
 
 #shodan
-#url parameter manipulation to open a webpage for whatever the user wants to search for
-#open it in a web browser = maybe use xdg-open
 shodanFunc(){
 	mainUrl="https://www.shodan.io/search?query="
 	searchParams=""
@@ -145,6 +174,7 @@ bannerGrab(){
 	echo "==================== Summary of wget for "$searchParam" ===================="
 	echo " "
 	wget -q -S "$searchParam"
+	rm index.*
 	echo " "
 	echo "==================== Summary of curl for "$searchParam" ===================="
 	echo " "
@@ -156,7 +186,8 @@ bannerGrab(){
 #Testing below here
 #whoIsFunc $1
 #googleMaps $@
-txtFileChecks $1
+#txtFileChecks $1
 #dnsCheck $1
 #shodanFunc $@
 #bannerGrab $1
+metadataExtraction $@
