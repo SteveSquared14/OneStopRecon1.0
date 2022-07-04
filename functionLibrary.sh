@@ -132,7 +132,7 @@ for file in "$@"; do
                 echo "Head of Hex Dump:" "$(hexdump $file_name | head)"
                 echo " "
 
-                if [ $file_ext == ".png" ] || [ $file_ext == ".jpg" ] || [ $file_ext == ".jpeg" ] || [ $file_ext == ".gif" ] || [ $file_ext == ".tiff" ] || [ $file_ext == ".psd" ];
+                if [[ "$file_ext" == ".png" ]] || [[ "$file_ext" == ".jpg" ]] || [[ "$file_ext" == ".jpeg" ]] || [[ "$file_ext" == ".gif" ]] || [[ "$file_ext" == ".tiff" ]] || [[ "$file_ext" == ".psd" ]];
                 then
                         exif $file_name
                         echo " "
