@@ -20,15 +20,18 @@ done
 
 # Help function  to display usages
 menu_help () {
-	echo -e "\t-w|--whois \t\t\t${cyan}Whois URL check\t\t\t\t\t\t\t\t${red}[passive]${reset}"
-	echo -e "\t-r|--Robots.txt  \t\t${cyan}Checks if URLs are disallowed\t\t\t\t\t\t${red}[passive]${reset}"
-	echo -e "\t-e|--Exploit-DB \t\t${cyan}Vulnerability checker\t\t\t\t\t\t\t${red}[passive]${reset}"
-	echo -e "\t-g|--googleDorking  \t\t${cyan}Refined Google Search\t\t\t\t\t\t\t${red}[passive]${reset}"
-	echo -e "\t-d|--DNS Enumeration  \t\t${cyan}Locating all DNS servers and corresponding records for a company\t${red}[passive/active]${reset}"
+	#echo -e "\t-e|--Exploit-DB \t\t${cyan}Vulnerability checker\t\t\t\t\t\t\t${red}[passive]${reset}"
+	#echo -e "\t-f|--FacebookDataExtractor \t${cyan}Exracts data from facebook  \t\t\t\t\t\t${red}[passive]${reset}"
+	echo -e "\t-dBa|--Dorking \t\t Run popular dorking searches using Baidu search engine${reset}"
+	echo -e "\t-dBi|--Dorking \t\t Run popular dorking searches using Bing search engine${reset}"
+	echo -e "\t-dD|--Dorking \t\t Run popular dorking searches using Duck Duck Go search engine${reset}"
+	echo -e "\t-dD|--Dorking \t\t Run popular dorking searches using Google search engine${reset}"
 	echo -e "\t-m|--googleMapRequest \t\t${cyan}Opens google map to inputted location\t\t\t\t\t${red}[passive]${reset}"
-	echo -e "\t-f|--FacebookDataExtractor \t${cyan}Exracts data from facebook  \t\t\t\t\t\t${red}[passive]${reset}"
+	echo -e "\t-n|--Name Server Enumeration  \t\t${cyan}Locating all DNS servers and corresponding records for a company\t${red}[passive/active]${reset}"	
 	echo -e "\t-s|--shodan  \t\t\t${cyan}IoT devices check\t\t\t\t\t\t\t${red}[passive]${reset}"
-        echo -e "\t-M|--MetaDataExtractor \t\t${cyan}Exracts data from files\t\t\t\t\t\t\t${red}[passive]${reset}"
+	echo -e "\t-t|--Text file recon  \t\t${cyan}Checks for potential intelligence in Robots.txt and Security.txt files of domain\t\t\t\t\t\t${red}[passive]${reset}"
+        echo -e "\t-m|--MetaDataExtractor \t\t${cyan}Exracts data from files\t\t\t\t\t\t\t${red}[passive]${reset}"
+	echo -e "\t-w|--whois \t\t\t${cyan}Whois URL check\t\t\t\t\t\t\t\t${red}[passive]${reset}"
 }
 
 if [ -z $QUIET ]; then
