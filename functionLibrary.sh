@@ -97,13 +97,16 @@ googleMaps(){
 	urlPrepend="https://google.com/maps/place/"
 	placeToOpen=""
 	for var in "$@"; do
-		if [[ $placeToOpen == "" ]];
-		then
-			placeToOpen=$var
-		else
-			placeToOpen=$placeToOpen+$var
-			shift
-		fi
+		#if $var contain hyphen, skip it
+		#else
+			if [[ $placeToOpen == "" ]];
+			then
+				placeToOpen=$var
+			else
+				placeToOpen=$placeToOpen+$var
+				shift
+			fi
+		#fi
 	done
 	urlAppend="/"
 	completeUrl=$urlPrepend$placeToOpen$urlAppend
