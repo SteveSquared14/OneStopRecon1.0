@@ -29,7 +29,6 @@ txtFileChecks(){
 	#robots.txt
 	urlAppend="/robots.txt"
 	completeUrl=$domainToOpen$urlAppend
-	#xdg-open $completeURL
 	echo "====================== Summary of robots.txt for "$domainToOpen" ===================="
 	wget -q $completeUrl
 	cat robots.txt
@@ -39,7 +38,6 @@ txtFileChecks(){
 	#security.txt
 	urlAppend2="/security.txt"
 	completeUrl2=$domainToOpen$urlAppend2
-	#xdg-open $completeUrl2
 	echo "==================== Summary of security.txt for "$domainToOpen" ===================="
 	wget -q $completeUrl2
 	cat security.txt
@@ -97,18 +95,23 @@ nsLookupFunc(){
 googleMaps(){
 	urlPrepend="https://google.com/maps/place/"
 	placeToOpen=""
-	for var in "$@"; do
-		if [[ $placeToOpen == "" ]];
-		then
-			placeToOpen=$var
-		else
-			placeToOpen=$placeToOpen+$var
+	argArray=($@)
+	for var in "${!argArray[@]}"; do
+		if [[ "${argArray[var]}" == *"-"* ]]; then
 			shift
+		else
+			if [[ $placeToOpen == "" ]]; then
+				placeToOpen=${argArray[var]}
+			else
+				placeToOpen=$placeToOpen+${argArray[var]}
+				shift
+			fi
 		fi
 	done
 	urlAppend="/"
 	completeUrl=$urlPrepend$placeToOpen$urlAppend
-	xdg-open $completeUrl
+	echo $completeUrl
+	#xdg-open $completeUrl
 }
 
 #facebook/social media
@@ -132,7 +135,7 @@ for file in "$@"; do
                 echo "Head of Hex Dump:" "$(hexdump $file_name | head)"
                 echo " "
 
-                if [[ "$file_ext" == ".png" ]] || [[ "$file_ext" == ".jpg" ]] || [[ "$file_ext" == ".jpeg" ]] || [[ "$file_ext" == ".gif" ]] || [[ "$file_ext" == ".tiff" ]] || [[ "$file_ext" == ".psd" ]];
+                if [ $file_ext == ".png" ] || [ $file_ext == ".jpg" ] || [ $file_ext == ".jpeg" ] || [ $file_ext == ".gif" ] || [ $file_ext == ".tiff" ] || [ $file_ext == ".psd" ];
                 then
                         exif $file_name
                         echo " "
