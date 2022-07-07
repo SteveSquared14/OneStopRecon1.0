@@ -1,7 +1,7 @@
 #!/bin/bash 
 
 #initialising common variables
-mainUrl="https://www.google.com/search?q="
+#mainUrl="https://www.google.com/search?q="
 colonHex="%3A"
 fileConvention="+filetype%3A"
 searchTerm="$2"
@@ -99,14 +99,28 @@ dorking_fileType_TXT(){
 }
 
 
+Excute_All_Dorkings(){
+	dorking_cache
+	dorking_site
+        dorking_inurl
+        dorking_intitle
+        dorking_intext
+        dorking_fileType_PDF
+        dorking_fileType_PNG
+        dorking_fileType_JPEG
+        dorking_fileType_XML
+        dorking_fileType_LOG
+}
+
+
 #function calling                                                                                                                 
-dorking_cache                                                                                                            
-dorking_site                                                                                                            
-dorking_inurl                                                                                                         
-dorking_intitle                                                                                                         
-dorking_intext                                                                                                          
-dorking_fileType_PDF
-dorking_fileType_PNG
-dorking_fileType_JPEG
-dorking_fileType_XML
-dorking_fileType_LOG
+#dorking_cache                                                                                                            
+#dorking_site                                                                                                            
+#dorking_inurl                                                                                                         
+#dorking_intitle                                                                                                         
+#dorking_intext                                                                                                          
+#dorking_fileType_PDF
+#dorking_fileType_PNG
+#dorking_fileType_JPEG
+#dorking_fileType_XML
+#dorking_fileType_LOG

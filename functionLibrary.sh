@@ -96,7 +96,7 @@ googleMaps(){
 	urlPrepend="https://google.com/maps/place/"
 	placeToOpen=""
 	argArray=($@)
-	for var in "${!argArray[@]}"; do
+	for var in "$@"; do
 		if [[ "${argArray[var]}" == *"-"* ]]; then
 			shift
 		else
@@ -111,7 +111,7 @@ googleMaps(){
 	urlAppend="/"
 	completeUrl=$urlPrepend$placeToOpen$urlAppend
 	echo $completeUrl
-	#xdg-open $completeUrl
+	xdg-open $completeUrl
 }
 
 #facebook/social media
@@ -120,6 +120,7 @@ googleMaps(){
 
 #metadata extraction - TBC by Mo
 metadataExtraction(){
+arrayFiles=("$@")
 for file in "$@"; do 
         if [ -f $file ];
         then
@@ -193,4 +194,4 @@ bannerGrab(){
 #dnsCheck $1
 #shodanFunc $@
 #bannerGrab $1
-metadataExtraction $@
+#metadataExtraction $@
