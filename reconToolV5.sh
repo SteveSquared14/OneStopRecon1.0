@@ -4,7 +4,7 @@
 #. $PathDir/functionLibrary.sh
 
 Path=/home/cipher/ReconTool
-. $Path/googleDorking.sh
+. $Path/dorking.sh
 . $Path/functionLibrary.sh
 
 #Help function  to display usages
@@ -37,104 +37,35 @@ menu_help () {
 
 
 
-#commandLineSwitch=$1
-#argumentToPass=( $2 )
-#arg=[$@]
-#arg=($@)
-#echo  ${arg[0]} ${arg[1]}
 
+#working with array of args as of 6/7/22 - may need to pass array here instead of $@ though due to new bugs
 
-# Google Maps
-
-
-	#if [[ $commandLineSwitch == "-m" ]]; then
-	#	googleMaps  "$argumentToPass"
-	#	exit 
-	#fi
-
-
-# Name server Enumration
-
-#if [[ $commandLineSwitch == "-n" ]]; then
-#        dnsCheck "$argumentToPass"
-#	exit 
-#fi
-
-
-# shodan 
-#if [[ $commandLineSwitch == "-s" ]]; then
-#        shodanFunc "$argumentToPass"
-#	exit 
-#fi
-
-#robots.txt & security.txt 
-
-#if [[ $commandLineSwitch == "-t" ]]; then
-#        txtFileChecks "$argumentToPass"
-#	exit 
-#fi
-
-
-
-#Metadata Extraction 
-
-#if [[ $commandLineSwitch == "-M" ]]; then
-#        metadataExtraction "$argumentToPass"
-#	exit
-#fi
-
-#whois 
-
-#if [[ $commandLineSwitch == "-w" ]]; then
-#        whoIsFunc "$argumentToPass"
-#	exit 
-#fi
-
-
-
-
-
-#Google Dorking
-
-commandLineSwitch=$1
-argumentToPass=$2
-
-
-if [ "$#" -gt "2" ]; then
-	#working with array of args as of 6/7/22 - may need to pass array here instead of $@ though due to new bugs
-	if [[ "$commandLineSwitch" == "-m" ]]; then
-		googleMaps "$@"
-        	#exit
-	elif [[ "$commandLineSwitch" == "-M" ]]; then
-        	metadataExtraction "$argumentToPass"
-        	#exit
-	fi
-elif [[ "$commandLineSwitch" == "--help" ]]; then
+if [[ "$commandLineSwitch" == "--help" ]]; then
 	  menu_help
-elif [ "$#" -ne  2  ]; then
-	echo "2 args are needed."
+elif [ "$#" -lt  2  ]; then
+	echo "Incorrect nummber of pramrters uses --help to display help menu."
 else
-	if [[ "$commandLineSwitch" == "-dBa" ]]; then
-		Excute_All_Dorkings
-	elif [[ "$commandLineSwitch" == "-dBi" ]]; then
-		Excute_All_Dorkings
+	#if [[ "$commandLineSwitch" == "-dBa" ]]; then
+		#Excute_All_Dorkings
+	if [[ "$commandLineSwitch" == "-dB" ]]; then
+		Excute_All_Dorkings #Bing
 	elif [[ "$commandLineSwitch" == "-dD" ]]; then
-		Excute_All_Dorkings
+		Excute_All_Dorkings #Duckduck go
 	elif [[ "$commandLineSwitch" == "-dG" ]]; then
-		Excute_All_Dorkings
+		Excute_All_Dorkings # Google
 	elif [[ "$commandLineSwitch" == "-n" ]]; then
-                dnsCheck "$argumentToPass"
-                #exit
+                dnsCheck "$argumentToPass" #DNS 
 	elif [[ "$commandLineSwitch" == "-s" ]]; then
-                shodanFunc "$argumentToPass"
-                #exit
+                shodanFunc "$argumentToPass" #Shodan
 	elif [[ "$commandLineSwitch" == "-t" ]]; then
-                txtFileChecks "$argumentToPass"
-                #exit
+                txtFileChecks "$argumentToPass" #security.txt & robots.txt
 	elif [[ "$commandLineSwitch" == "-w" ]]; then
-                whoIsFunc "$argumentToPass"
-                #exit 
+                whoIsFunc "$argumentToPass" #whoIs
 	elif [[ "$commandLineSwitch" == "-g" ]]; then 
-		bannerGrab "$argumentToPass"
-	fi
+		bannerGrab "$argumentToPass" #banner grabbing
+	elif [[ "$commandLineSwitch" == "-m" ]]; then
+                googleMaps "$@" #Google Maps
+        elif [[ "$commandLineSwitch" == "-M" ]]; then
+                metadataExtraction "$@" # Metadata Extraction
+        fi
 fi

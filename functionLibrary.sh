@@ -51,7 +51,6 @@ txtFileChecks(){
 #Commands to use - dig, host, nslookup
 dnsCheck(){
 	#run dig command with a parameter of a chosen domain
-	#dig $1 > tempDigFile.txt
 	echo "======================= Summary of Dig for "$1" ======================="
 	dig $1
 	ipAddr="$(dig $1 | grep -Eo "[0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}$")"
@@ -96,7 +95,7 @@ googleMaps(){
 	urlPrepend="https://google.com/maps/place/"
 	placeToOpen=""
 	argArray=($@)
-	for var in "$@"; do
+	for var in "${!argArray[@]}"; do
 		if [[ "${argArray[var]}" == *"-"* ]]; then
 			shift
 		else
@@ -110,7 +109,6 @@ googleMaps(){
 	done
 	urlAppend="/"
 	completeUrl=$urlPrepend$placeToOpen$urlAppend
-	echo $completeUrl
 	xdg-open $completeUrl
 }
 
@@ -121,10 +119,10 @@ googleMaps(){
 #metadata extraction - TBC by Mo
 metadataExtraction(){
 arrayFiles=("$@")
-for file in "$@"; do 
-        if [ -f $file ];
+for file in "${!arrayFiles[@]}"; do 
+        if [ -f "${arrayFiles[file]}" ];
         then
-                file_name=$1
+                file_name="${arrayFiles[file]}"
                 file_ext="$(echo "$file_name" | grep -Eo "[.][a-z]+")"
                 echo "file extension is "$file_ext""
 
@@ -187,11 +185,4 @@ bannerGrab(){
 
 
 
-#Testing below here
-#whoIsFunc $1
-#googleMaps $@
-#txtFileChecks $1
-#dnsCheck $1
-#shodanFunc $@
-#bannerGrab $1
-#metadataExtraction $@
+
