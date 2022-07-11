@@ -1,9 +1,8 @@
 #!/bin/bash
 
 PathDir="$(pwd)"
-#. $PathDir/functionLibrary.sh
-. $PathDir/dorking2.sh
-. $PathDir/functionLibrary2.sh
+. $PathDir/dorking.sh
+. $PathDir/functionLibrary.sh
 
 #Help function  to display usages
 menu_help () {
