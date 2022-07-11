@@ -1,4 +1,5 @@
 #!/bin/bash
+#Updated permissions
 ToolsDirectory=~/ReconTool
 
 sudo apt update
