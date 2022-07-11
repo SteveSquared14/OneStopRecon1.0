@@ -21,7 +21,7 @@ sudo ln -s $WorkingDrive /usr/local/bin/ReconTool
 #Install exif for metadata extraction
 #cd ReconTool
 sudo apt install exif
-chmod 555 reconToolV6.sh
+chmod 755 reconToolV6.sh
 
 echo "Installation finished!..."
 echo "[!] Restart your terminal for changes to take effect"
