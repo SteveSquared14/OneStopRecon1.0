@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PathDir=/home/sduckett/Documents/reconTool
+PathDir=/home/sduckett/Documents/ReconTool
 #. $PathDir/functionLibrary.sh
 . $PathDir/dorking2.sh
 . $PathDir/functionLibrary2.sh
