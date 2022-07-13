@@ -1,6 +1,6 @@
 # One Stop Recon Version 1.0
 
-## content 
+## Contents 
 
 * [Project Description](#project-description)
 * [Installation](#installation)
