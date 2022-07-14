@@ -19,36 +19,38 @@ This project has been developed so that passive reconnaissance can be conducted 
 git clone https://github.com/SteveSquared14/ReconTool.git
 cd OneStopRecon 
 bash install.sh
-bash oneStopRecon.sh
+./OneStopRecon.sh
 ```
 ## Usages
 
 Within this tool there are multiple passive reconnaissance techniques implemented into one tool. The techniques that are implemented are mentioned in the “project descriptions”. Usages of each tool are shown down below. 
 
 ```bash
-Dorking: “-dB” (Bing), “-dD” (Duck Duck Go) & “-dG” (Google), Syntax = bash OneStopRecon.sh -dG yourTerm (Advisory: On the google search engine you could potentiality encounter captcha issue.To fix this issue you will need clear the cache within the browser.)
-Banner Grabbing: “-g”, Syntax = bash OneStopRecon.sh -g URL (e.g., www.mchoglay.com) 
-Metadata Extraction: “-M”, Syntax = bash OneStopRecon.sh -M FileName (Note: you can pass more than 1 file) 
-Google Maps Requester: “-m”, Syntax = bash OneStopRecon.sh -m full address or location (e.g., 43 crescent, Salford M5 4WT) 
-Name Sever Enumeration: “-n”, Syntax = bash OneStopRecon.sh -n URL (e.g., www.mchoglay.com) 
-Shodan: “-s”, Syntax = bash OneStopRecon.sh -s IP address or a term (e.g., 8.8.8.8 or Hikvision) 
-Text file recon: “-t”, Syntax = bash OneStopRecon.sh -t URL (e.g., www.mchoglay.com) 
-Whois: “-w”, Syntax = bash OneStopRecon.sh -w URL (e.g., www.mchoglay.com) 
+Dorking: “-dB” (Bing), “-dD” (Duck Duck Go) & “-dG” (Google), Syntax = ./OneStopRecon.sh -dG yourTerm (Advisory: On the google search engine you could potentiality encounter captcha issue.To fix this issue you will need clear the cache within the browser.)
+Banner Grabbing: “-g”, Syntax = ./OneStopRecon.sh -g URL (e.g., www.mchoglay.com) 
+Metadata Extraction: “-M”, Syntax = ./OneStopRecon.sh -M FileName (Note: you can pass more than 1 file) 
+Google Maps Requester: “-m”, Syntax = ./OneStopRecon.sh -m full address or location (e.g., 43 crescent, Salford M5 4WT) 
+Name Sever Enumeration: “-n”, Syntax = ./OneStopRecon.sh -n URL (e.g., www.mchoglay.com) 
+Shodan: “-s”, Syntax = ./OneStopRecon.sh -s IP address or a term (e.g., 8.8.8.8 or Hikvision) 
+Text file recon: “-t”, Syntax = ./OneStopRecon.sh -t URL (e.g., www.mchoglay.com) 
+Whois: “-w”, Syntax = ./OneStopRecon.sh -w URL (e.g., www.mchoglay.com) 
 ```
 
 # Bugs Found
 logs:
-* As of the 13th of July 2022, no bugs and problems were detected.   
+* As of the 13th of July 2022, no bugs and problems were detected. (Remediated bugs will be logged as/if they occur in future versions).   
 
 ## Future Developments  
 Version 2.0 developments will consist of: 
- * Reading from files & outputting to files  
- * Screenshot for google maps 
+ * Reading input from files 
+ * Save output of modules to file(s)  
+ * Screenshot for Google Maps 
  * GoBuster  
  * Google Dorking enhancements  
+ * Further development of Name Server Enumeration
  
-and more additional enhancements.  
+ and more additional enhancements.  
 
 ## Credits
 
-The following project has been developed by Mohammed Choglay & Steven Duckett. Current Year 3 students at the University of Salford studying Computer Science with Cyber Security.
+The following project has been desigend, developed and created by Mohammed Choglay (CTSFO-CryptoChoglay) & Steven Duckett (SteveSquared14). Current Final Year students at the University of Salford studying Computer Science w/ Cyber Security.
