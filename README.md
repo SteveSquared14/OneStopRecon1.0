@@ -48,8 +48,6 @@ Version 2.0 developments will consist of:
  * GoBuster  
  * Google Dorking enhancements  
  * Further development of Name Server Enumeration
- 
- and more additional enhancements.  
 
 ## Credits
 
