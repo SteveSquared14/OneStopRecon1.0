@@ -37,7 +37,7 @@ Whois: “-w”, Syntax = ./OneStopRecon.sh -w URL (e.g., www.mchoglay.com)
 ```
 
 # Bugs Found
-logs:
+Logs:
 * As of the 13th of July 2022, no bugs and problems were detected. (Remediated bugs will be logged as/if they occur in future versions).   
 
 ## Future Developments  
