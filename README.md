@@ -11,7 +11,7 @@
 
 ## Project Description
 
-This project has been developed so that passive reconnaissance can be conducted more efficiently. The tool can perform the following passive reconnaissance techniques: Dorking, banner grabbing, metadata extraction, google maps requester, name server enumeration, Shodan query, extraction of txt files (Robot.txt and Security.txt) from sites and whoIS. The whole purpose of this tool is to have a more centralised system to conduct the passive reconnaissance more effectively to optimise results in the fast time available.
+This project has been developed so that passive reconnaissance can be conducted more efficiently - through a mixture of industry standard command, and bespoke, custom-developed tools. The tool can perform the following passive reconnaissance techniques: Dorking, banner grabbing, metadata extraction, google maps requester, name server enumeration, Shodan query, extraction of txt files (Robot.txt and Security.txt) from sites and whoIS. The whole purpose of this tool is to have a more centralised system to conduct the passive reconnaissance more effectively to optimise results in the fast time available.
 
 ## Installation
 
