@@ -16,7 +16,7 @@ This project has been developed so that passive reconnaissance can be conducted 
 ## Installation
 
 ```bash
-git clone https://github.com/SteveSquared14/ReconTool.git
+git clone https://github.com/SteveSquared14/OneStopRecon.git
 cd OneStopRecon 
 bash install.sh
 ./OneStopRecon.sh
