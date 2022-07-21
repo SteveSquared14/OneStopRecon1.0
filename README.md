@@ -27,13 +27,13 @@ Within this tool there are multiple passive reconnaissance techniques implemente
 
 ```bash
 Dorking: “-dB” (Bing), “-dD” (Duck Duck Go) & “-dG” (Google), Syntax = ./OneStopRecon.sh -dG yourTerm (Advisory: On the google search engine you could potentiality encounter captcha issue.To fix this issue you will need clear the cache within the browser.)
-Banner Grabbing: “-g”, Syntax = ./OneStopRecon.sh -g URL (e.g., www.mchoglay.com) 
+Banner Grabbing: “-g”, Syntax = ./OneStopRecon.sh -g URL (e.g., mchoglay.com) 
 Metadata Extraction: “-M”, Syntax = ./OneStopRecon.sh -M FileName (Note: you can pass more than 1 file) 
 Google Maps Requester: “-m”, Syntax = ./OneStopRecon.sh -m full address or location (e.g., 43 crescent, Salford M5 4WT) 
-Name Sever Enumeration: “-n”, Syntax = ./OneStopRecon.sh -n URL (e.g., www.mchoglay.com) 
+Name Sever Enumeration: “-n”, Syntax = ./OneStopRecon.sh -n URL (e.g., mchoglay.com) 
 Shodan: “-s”, Syntax = ./OneStopRecon.sh -s IP address or a term (e.g., 8.8.8.8 or Hikvision) 
-Text file recon: “-t”, Syntax = ./OneStopRecon.sh -t URL (e.g., www.mchoglay.com) 
-Whois: “-w”, Syntax = ./OneStopRecon.sh -w URL (e.g., www.mchoglay.com) 
+Text file recon: “-t”, Syntax = ./OneStopRecon.sh -t URL (e.g., mchoglay.com) 
+Whois: “-w”, Syntax = ./OneStopRecon.sh -w URL (e.g., mchoglay.com) 
 ```
 
 # Bugs Found
