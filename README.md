@@ -51,4 +51,4 @@ Version 2.0 developments will consist of:
 
 ## Credits
 
-The following project has been desigend, developed and created by Mohammed Choglay (CTSFO-CryptoChoglay) & Steven Duckett (SteveSquared14). Current Final Year students at the University of Salford studying Computer Science w/ Cyber Security.
+The following project has been desigend, developed and created by Mohammed Choglay (CTSFO-CryptoChoglay) & Steven Duckett (SteveSquared14).
